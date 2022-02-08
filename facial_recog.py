@@ -126,7 +126,7 @@ if __name__ == '__main__':
         files.append(file_)
 
     # On crée une variable de type tableau qui va stocker les nom des personnes dont le visage est dans la base
-    known_face_names = ['Amed', 'Kanoute', 'Diop Wade', 'paulWalker', 'Zuckerberg']
+    known_face_names = ['Amar','Amine','Jules','Philippe']
 
     # Ce tableau va stocker le des encodages de chaque visage
     known_face_encodings = []
