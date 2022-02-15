@@ -5,6 +5,8 @@ import numpy as np
 from imutils import face_utils
 import argparse
 from pathlib import Path
+import os
+import face_recognition as fr
 
 
 parser = argparse.ArgumentParser(description='App de reconnaissance faciale')
@@ -126,7 +128,24 @@ if __name__ == '__main__':
         files.append(file_)
 
     # On crée une variable de type tableau qui va stocker les nom des personnes dont le visage est dans la base
-    known_face_names = ['Amar','Amine','Jules','Philippe']
+    
+    path = "./visages_connus/"
+
+    known_face_names = []
+    known_name_encodings = []
+
+    images = os.listdir(path)
+    for _ in images:
+        image = fr.load_image_file(path + _)
+        image_path = path + _
+        encoding = fr.face_encodings(image)[0]
+
+        known_name_encodings.append(encoding)
+        known_face_names.append(os.path.splitext(os.path.basename(image_path))[0].capitalize())
+
+
+    
+    #known_face_names = ['Amar','Amine','Jules','Philippe']
 
     # Ce tableau va stocker le des encodages de chaque visage
     known_face_encodings = []
